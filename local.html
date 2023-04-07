@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input,button{
+            padding: 10px;
+            margin: 10px;
+        }
+        #insert{
+            margin-left: 165px;
+        }
+        fieldset{
+            width: 50%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <fieldset>
+        <legend>Form Data</legend>
+            <input type="text" id="keyid" placeholder="Enter key...."/>
+            <input type="text" id="valueid" placeholder="Enter value...."/>
+            <br><br>
+            <button id="insert">insert data</button>
+
+    
+    </fieldset>
+
+    <fieldset>
+        <legend>localStorage Data</legend>
+        <div id="demo"></div>
+    </fieldset>
+
+
+
+
+    <script>
+        const keyid=document.getElementById("keyid");
+        const keyvalue=document.getElementById("valueid");
+        const btn=document.getElementById("insert");
+        const demo=document.getElementById("demo");
+
+
+        btn.onclick=function () {
+            let key=keyid.value;
+            let value=keyvalue.value;
+            console.log(key);
+            console.log(value);
+
+
+            if(key&&value){
+                localStorage.setItem(key,value);
+                location.reload();
+            }
+        };
+
+        for(i=0;i<localStorage.length;i++){
+            const key=localStorage.key(i);
+            const value=localStorage.getItem(key);
+            demo.innerHTML +=`${key}:${value}<br/>`
+        }
+        </script>
+    
+</body>
+</html>
